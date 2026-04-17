@@ -1,5 +1,6 @@
 const apiUrl = "https://striveschool-api.herokuapp.com/api/product/";
-const apiKey = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWUxZTFhYzczOWY4NzAwMTU3YWIwODgiLCJpYXQiOjE3NzY0MTEwNTIsImV4cCI6MTc3NzYyMDY1Mn0.TlevMKTw6sR2qLolKy_AF0czZscRN7wRkVPwPX79Vq4";
+const apiKey =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWUxZTFhYzczOWY4NzAwMTU3YWIwODgiLCJpYXQiOjE3NzY0MTEwNTIsImV4cCI6MTc3NzYyMDY1Mn0.TlevMKTw6sR2qLolKy_AF0czZscRN7wRkVPwPX79Vq4";
 
 /* DOM */
 const nameProduct = document.getElementById("nameProduct");
@@ -53,7 +54,9 @@ resetBtn.addEventListener("click", () => {
 });
 
 deleteBtn.addEventListener("click", () => {
-  const confirmDelete = confirm("Are you sure you want to delete this product?");
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this product?",
+  );
   if (confirmDelete) {
     deleteProduct(productId);
   }
@@ -66,7 +69,7 @@ const getProductPayload = () => {
     description: descriptionProduct.value.trim(),
     brand: brandProduct.value.trim(),
     price: Number(priceProduct.value),
-    imageUrl: urlImgProduct.value.trim()
+    imageUrl: urlImgProduct.value.trim(),
   };
 };
 
@@ -109,9 +112,9 @@ const createProduct = async () => {
       method: "POST",
       headers: {
         Authorization: apiKey,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(product)
+      body: JSON.stringify(product),
     });
 
     const responseText = await response.text();
@@ -136,8 +139,8 @@ const createProduct = async () => {
 const getProductDetails = (id) => {
   fetch(apiUrl + id, {
     headers: {
-      Authorization: apiKey
-    }
+      Authorization: apiKey,
+    },
   })
     .then((response) => {
       if (!response.ok) throw new Error("Error loading product");
@@ -160,9 +163,9 @@ const updateProduct = (id) => {
     method: "PUT",
     headers: {
       Authorization: apiKey,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(product)
+    body: JSON.stringify(product),
   })
     .then((response) => {
       if (!response.ok) throw new Error("Error updating product");
@@ -182,8 +185,8 @@ const deleteProduct = (id) => {
   fetch(apiUrl + id, {
     method: "DELETE",
     headers: {
-      Authorization: apiKey
-    }
+      Authorization: apiKey,
+    },
   })
     .then((response) => {
       if (!response.ok) throw new Error("Error deleting product");
@@ -195,3 +198,7 @@ const deleteProduct = (id) => {
       alert("There was an error deleting the product");
     });
 };
+
+/* DATE */
+const myYear = document.getElementById("date");
+myYear.textContent = new Date().getFullYear();

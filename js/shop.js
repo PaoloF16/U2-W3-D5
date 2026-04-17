@@ -1,5 +1,6 @@
 const apiUrl = "https://striveschool-api.herokuapp.com/api/product/";
-const apiKey = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWUxZTFhYzczOWY4NzAwMTU3YWIwODgiLCJpYXQiOjE3NzY0MTEwNTIsImV4cCI6MTc3NzYyMDY1Mn0.TlevMKTw6sR2qLolKy_AF0czZscRN7wRkVPwPX79Vq4";
+const apiKey =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWUxZTFhYzczOWY4NzAwMTU3YWIwODgiLCJpYXQiOjE3NzY0MTEwNTIsImV4cCI6MTc3NzYyMDY1Mn0.TlevMKTw6sR2qLolKy_AF0czZscRN7wRkVPwPX79Vq4";
 
 /* DOM */
 const container = document.getElementById("cards-container");
@@ -32,8 +33,8 @@ const getProduct = () => {
 
   fetch(apiUrl, {
     headers: {
-      Authorization: apiKey
-    }
+      Authorization: apiKey,
+    },
   })
     .then((response) => {
       if (!response.ok) {
